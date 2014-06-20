@@ -1,0 +1,122 @@
+import java.util.*;
+import java.io.*;
+import java.util.StringTokenizer;
+import java.util.Scanner;
+
+public class MoveApp2
+{
+    public static void main (String [] args) throws IOException
+    {
+        try {
+        int s,numBox,box,size=0;
+        String id,ori,dest;
+        double ratePBox,rate,sum=0;
+       
+        Scanner in = new Scanner (System.in);
+        System.out.println("Please enter array size");
+        size=in.nextInt();
+       
+        File fileIn = new File ("input.txt");
+        Scanner inf = new Scanner (fileIn);
+        CustomerMove []MoveArr = new CustomerMove [size];
+        String indata = null;
+       
+        
+            for (int i=0;i<MoveArr.length;i++)
+            {
+                //CustomerMove []MoveArr = new CustomerMove [5];
+                //String indata = null;
+                //while (inf.hasNext ());
+                
+                    
+                    indata=inf.nextLine ();
+                    StringTokenizer st = new StringTokenizer (indata, ";");
+                    id = st.nextToken ();
+                    box = Integer.parseInt (st.nextToken ());
+                    ori = st.nextToken ();
+                    dest = st.nextToken ();
+                    rate = Double.parseDouble (st.nextToken ());
+                    
+                    MoveArr [i] = new CustomerMove(id,box,ori,dest,rate);
+                    //i++;
+                    System.out.println ( ("\n")+MoveArr[i].toString ()+("\n"));
+                    
+                    /*if ( i == MoveArr.length)
+                    {
+                        break;
+                    }*/
+              } 
+              
+              
+              
+              for(int i =0;i<MoveArr.length;i++)
+                {
+                    if (MoveArr[i].getDestination().equalsIgnoreCase("Texas"))
+                    {
+                        
+                        System.out.println ("To Texas : " //+MoveArr[i].getCustomerId()  
+                        +("\n")+MoveArr[i].toString()+("\n"));
+                    }
+                }
+                
+              for (int i = 0; i< MoveArr.length; i++)
+              {
+                  if (MoveArr[i].getOrigin().equalsIgnoreCase("Vegas"))
+                  {
+                      sum = sum+MoveArr[i].calcTotalCharges();
+                      System.out.println ("Details of packages that originated from Vegas \n" 
+                      +MoveArr[i].toString ()+("\n"));
+                      //System.out.println ("\nTotal charges from Vegas is : " + sum ); 
+                      //+MoveArr[i].getCustomerId() 
+                      //+("\n")+MoveArr[i].toString()+
+                      //"\nThe sum is : ") +sum);
+                   }
+                   
+              }
+              
+              System.out.println ("\nTotal charges from Vegas is : " + sum );
+              
+            inf.close ();   
+           }
+         
+        
+                catch (FileNotFoundException fnf)
+                { 
+                    System.out.println (fnf.getMessage()); 
+                }
+                catch (IOException ioe)
+                {
+                    System.out.println (ioe.getMessage()); 
+                }
+                catch (Exception ex)
+                { 
+                    System.out.println (ex.getMessage());
+                }
+                
+            /*    for(int i =0;i<size;i++)
+                {
+                    if (MoveArr[i].getDestination.equalIgnoreCase("Tashkent"))
+                    {
+                        system.out.println (MoveArr[i].toString());
+                    }
+                }
+                
+             */   
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+            }
+        }
+
+            
+                    
+                    
+            
